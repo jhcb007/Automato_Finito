@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="pt-br" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="pt-br" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="pt-br" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="pt-br" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Autômatos Finitos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-controller="Inicio">
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <h1>Autômatos Finitos</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <form ng-submit="verifica_automato()" class="form-inline">
+            <div class="form-group">
+                <label for="staticEmail2" class="sr-only">Email</label>
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail2"
+                       value="Entre com a linguagem">
+            </div>
+            <div class="form-group mx-sm-3">
+                <label for="inputPassword2" class="sr-only">Linguagem</label>
+                <input type="text" ng-model="linguagem" required class="form-control" id="inputPassword2"
+                       placeholder="">
+            </div>
+            <button type="submit" class="btn btn-primary">Verificar</button>
+        </form>
+        <hr>
+        <p ng-if="estado_tran.length > 1" ng-repeat="e in estado_tran">
+            <span class="badge badge-dark">({{e.ant}},{{e.trans}})</span> | <span
+                class="badge badge-danger">{{e.ant}}</span> {{e.simb}} --> <span
+                class="badge badge-success">{{e.atu}}</span>
+        </p>
+    </div>
+</div>
+<div ng-if="!invalida && array_linguagem.length > 0" class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="alert alert-success" role="alert">
+            O Autômato reconheceu a liguagem
+        </div>
+    </div>
+</div>
+
+<div ng-if="invalida && array_linguagem.length > 0" class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="alert alert-danger" role="alert">
+            O Autômato não reconheceu a liguagem
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
